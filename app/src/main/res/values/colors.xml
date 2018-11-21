@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#23BAD1</color>
+    <color name="colorPrimaryDark">#23BAD1</color>
+    <color name="colorAccent">#D0D0D0</color>
+
+    <color name="line_color">#EEEEEE</color>
+
+    <color name="colorCard">#EFEFEF</color>
+
+    <color name="comment_text">#5b5d5c</color>
+</resources>
