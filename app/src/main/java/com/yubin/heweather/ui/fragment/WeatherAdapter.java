@@ -126,6 +126,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView locationCity;
         @BindView(R.id.location_discrtict)
         TextView locationDiscrtict;
+        @BindView(R.id.cond_tv)
+        TextView condTv;
 
         NowWeatherViewHolder(View itemView) {
             super(itemView);
@@ -144,6 +146,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         weatherIcon);
                 locationCity.setText(weather.getBasic().getParent_city());
                 locationDiscrtict.setText(weather.getBasic().getLocation());
+                condTv.setText(weather.getNow().getCond_txt());
             } catch (Exception e) {
                 XLog.d(TAG, e.toString());
             }

@@ -37,6 +37,7 @@ public class AirFragment extends BaseFragment implements AirContract.View {
     @BindView(R.id.air_refresh)
     SmartRefreshLayout airRefresh;
     private AirContract.Presenter mPresenter;
+    private AirAdapter airAdapter;
 
     @Override
     public void onResume() {
@@ -62,16 +63,6 @@ public class AirFragment extends BaseFragment implements AirContract.View {
     protected void initView(View root) {
         super.initView(root);
         airRefresh.setRefreshHeader(new BezierCircleHeader(getContext()));
-        airRefresh.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshLayout) {
-                if(mPresenter !=null){
-                    String city = Basepreference.getString(Constant.LOCATION_CITY);
-                    mPresenter.getAirData(city);
-                }
-                airRefresh.finishRefresh(1000);
-            }
-        });
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         new AirPresenter(this , HeWeatherModel.getInstance());
 
@@ -96,12 +87,23 @@ public class AirFragment extends BaseFragment implements AirContract.View {
     @Override
     protected void bindEvent() {
         super.bindEvent();
+        airRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshLayout) {
+                if(mPresenter !=null){
+                    String city = Basepreference.getString(Constant.LOCATION_CITY);
+                    mPresenter.getAirData(city);
+                }
+                airRefresh.finishRefresh(1000);
+            }
+        });
     }
 
 
     @Override
     public void showAirData(AirBean.HeWeather6Bean airData) {
-
+        airAdapter = new AirAdapter(airData);
+        recyclerview.setAdapter(airAdapter);
     }
 
     @Override
@@ -111,9 +113,9 @@ public class AirFragment extends BaseFragment implements AirContract.View {
 
     @Override
     public void showLoading(boolean show) {
-        if(show){
+        if (show) {
             showWaitDialog();
-        }else {
+        } else {
             hideWaitDialog();
         }
 

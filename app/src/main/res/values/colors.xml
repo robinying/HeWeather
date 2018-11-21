@@ -9,4 +9,14 @@
     <color name="colorCard">#EFEFEF</color>
 
     <color name="comment_text">#5b5d5c</color>
+
+    <color name="cyan_500">#00BCD4</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="light_blue_500">#03A9F4</color>
+    <color name="orange_500">#FF9800</color>
+    <color name="lime_500">#CDDC39</color>
+    <color name="amber_500">#FFC107</color>
+    <color name="pink_500">#E91E63</color>
+    <color name="green_c1">#00F4C1</color>
+    <color name="drak_red">#D81E06</color>
 </resources>

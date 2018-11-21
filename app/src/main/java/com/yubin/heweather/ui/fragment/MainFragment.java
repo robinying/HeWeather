@@ -79,6 +79,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                     }
                 })
                 .subscribe();
+        recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
@@ -102,7 +103,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void showWeatherData(WeatherBean.HeWeather6Bean heWeather6Bean) {
         adapter = new WeatherAdapter(heWeather6Bean);
-        recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerview.setAdapter(adapter);
 
     }

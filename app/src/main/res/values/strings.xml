@@ -25,6 +25,13 @@
     <string name="air_title">空气指数---</string>
 
     <string name="data_from_title">天气数据来源于和风天气</string>
+    <string name="air_now_city_com">主要污染物:</string>
+    <string name="pm25_title">PM2.5细微颗粒</string>
+    <string name="pm10_title">PM10颗粒物</string>
+    <string name="so2_title">SO2二氧化硫</string>
+    <string name="co_title">CO一氧化碳</string>
+    <string name="no2_title">NO2二氧化氮</string>
+    <string name="o3_title">O3臭氧</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

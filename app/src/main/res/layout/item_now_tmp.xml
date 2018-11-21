@@ -38,7 +38,7 @@
                 android:id="@+id/location_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="22sp"
                 tools:text="宁波市" />
 
             <TextView
@@ -46,9 +46,19 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 tools:text="鄞州区" />
+
+            <TextView
+                android:id="@+id/cond_tv"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                tools:text="小雨" />
         </LinearLayout>
+
+
 
         <LinearLayout
             android:id="@+id/linear_temp"
@@ -79,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#BDBDBD"
                     tools:text="16℃"
-                    android:textSize="18sp"/>
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/temp_min"
@@ -88,7 +98,7 @@
                     android:layout_marginTop="20dp"
                     android:textColor="#BDBDBD"
                     tools:text="10℃"
-                    android:textSize="18sp"/>
+                    android:textSize="16sp"/>
             </LinearLayout>
 
         </LinearLayout>
