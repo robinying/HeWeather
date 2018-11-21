@@ -59,6 +59,14 @@ public class Basepreference {
         return SP_UTILS.getBoolean(key,defaultvalue);
     }
 
+    public static boolean contains(String key) {
+        return SP_UTILS.contains(key);
+    }
+
+    public static void remove(String key) {
+         SP_UTILS.remove(key);
+    }
+
     public static void clear() {
         SP_UTILS.clear();
     }

@@ -24,6 +24,7 @@ import com.yubin.heweather.R;
 import com.yubin.heweather.bean.NowBean;
 import com.yubin.heweather.bean.WeatherBean;
 import com.yubin.heweather.config.Constant;
+import com.yubin.heweather.model.CityDataSource;
 import com.yubin.heweather.model.HeWeatherModel;
 import com.yubin.heweather.model.Location;
 import com.yubin.heweather.ui.base.BaseAppCompatActivity;
@@ -67,6 +68,7 @@ public class MainActivity extends BaseAppCompatActivity
     private MainFragment mMainFragment;
     private AirFragment mAirFragment;
     private MultiCityChooseFragment mMultiCityChooseFragment;
+    private CityDataSource cityDataSource;
 
 
     public static void show(Context context) {
@@ -90,8 +92,7 @@ public class MainActivity extends BaseAppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                cityDataSource.showPickerView();
             }
         });
 
@@ -117,11 +118,12 @@ public class MainActivity extends BaseAppCompatActivity
     protected void initData() {
         super.initData();
         mLocation = new Location();
-        checkPermissions();
+        //checkPermissions();
         initIcon();
         if (mLocation != null) {
             mLocation.startLocation();
         }
+        cityDataSource = new CityDataSource(this);
 
     }
 
@@ -211,18 +213,7 @@ public class MainActivity extends BaseAppCompatActivity
         }
     }
 
-    private void checkPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            final RxPermissions rxPermissions = new RxPermissions(this);
-            rxPermissions.request(Constant.REQUEST_PERMISSIONS).subscribe(granted -> {
-                if (granted) { // Always true pre-M
-                    mLocation.startLocation();
-                } else {
-                    // Oups permission denied
-                }
-            });
-        }
-    }
+
 
     private void initIcon(){
         Basepreference.putInt("未知", R.drawable.ic_unknown_weather);

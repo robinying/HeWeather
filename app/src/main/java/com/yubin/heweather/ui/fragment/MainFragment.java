@@ -43,7 +43,12 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void onResume() {
         super.onResume();
-        String district = Basepreference.getString(Constant.LOCATION_DISTRICT);
+        String district = null;
+        if (!Basepreference.contains(Constant.USE_DISTRICT)) {
+            district = Basepreference.getString(Constant.LOCATION_DISTRICT);
+        } else {
+            district = Basepreference.getString(Constant.USE_DISTRICT);
+        }
         mPresenter.getWeatherData(district);
     }
 
@@ -73,8 +78,12 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 .filter(event -> isVisible())
                 .doOnNext(event -> {
                     if (mPresenter != null) {
-                        String city = Basepreference.getString(Constant.LOCATION_CITY);
-                        String district = Basepreference.getString(Constant.LOCATION_DISTRICT);
+                        String district = null;
+                        if (!Basepreference.contains(Constant.USE_DISTRICT)) {
+                            district = Basepreference.getString(Constant.LOCATION_DISTRICT);
+                        } else {
+                            district = Basepreference.getString(Constant.USE_DISTRICT);
+                        }
                         mPresenter.getWeatherData(district);
                     }
                 })
@@ -93,7 +102,12 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         mainRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                String district = Basepreference.getString(Constant.LOCATION_DISTRICT);
+                String district = null;
+                if (!Basepreference.contains(Constant.USE_DISTRICT)) {
+                    district = Basepreference.getString(Constant.LOCATION_DISTRICT);
+                } else {
+                    district = Basepreference.getString(Constant.USE_DISTRICT);
+                }
                 mPresenter.getWeatherData(district);
                 mainRefresh.finishRefresh(1000);
             }
