@@ -19,6 +19,9 @@ import com.yubin.heweather.bean.CityBeanDao;
 import com.yubin.heweather.config.Constant;
 import com.yubin.heweather.ui.base.BaseFragment;
 import com.yubin.heweather.utils.Basepreference;
+import com.yubin.heweather.utils.ChangeCityEvent;
+import com.yubin.heweather.utils.RxBus;
+import com.yubin.heweather.utils.XLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * author : Yubin.Ying
@@ -69,9 +73,19 @@ public class MultiCityChooseFragment extends BaseFragment {
     @Override
     protected void initView(View root) {
         super.initView(root);
+        cityBeanDao = App.getAppInstance().getDaoSession().getCityBeanDao();
         initCityData();
         cityRefresh.setRefreshHeader(new BezierCircleHeader(getContext()));
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        RxBus.getDefault()
+                .toObservable(ChangeCityEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter(event -> isVisible())
+                .doOnNext(event -> {
+                    initCityData();
+                    cityAdapter.notifyDataSetChanged();
+                })
+                .subscribe();
     }
 
     @Override
@@ -95,7 +109,6 @@ public class MultiCityChooseFragment extends BaseFragment {
 
 
     private void initCityData() {
-        cityBeanDao = App.getAppInstance().getDaoSession().getCityBeanDao();
         if (cityBeanDao.loadAll().size() > 0) {
             cityData = cityBeanDao.loadAll();
         } else {
@@ -114,6 +127,10 @@ public class MultiCityChooseFragment extends BaseFragment {
             locationcity.setDiscrict(Basepreference.getString(Constant.LOCATION_DISTRICT));
             locationcity.setCity(Basepreference.getString(Constant.LOCATION_CITY));
             cityData.add(locationcity);
+        }
+        if(cityData !=null){
+            cityAdapter = new CityAdapter(cityData);
+            recyclerview.setAdapter(cityAdapter);
         }
     }
 }

@@ -13,7 +13,7 @@ import org.greenrobot.greendao.annotation.Generated;
 public class CityBean {
 
     @Id(autoincrement = true)
-    private long id;
+    private Long id;
 
     private String city;
 
@@ -22,11 +22,8 @@ public class CityBean {
     private String province;
 
 
-
-
-
-    @Generated(hash = 1417154620)
-    public CityBean(long id, String city, String discrict, String province) {
+    @Generated(hash = 257719200)
+    public CityBean(Long id, String city, String discrict, String province) {
         this.id = id;
         this.city = city;
         this.discrict = discrict;
@@ -36,10 +33,6 @@ public class CityBean {
     @Generated(hash = 273649691)
     public CityBean() {
     }
-
-
-    
-
 
     public String getCity() {
         return city;
@@ -65,11 +58,13 @@ public class CityBean {
         this.province = province;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
+
 }

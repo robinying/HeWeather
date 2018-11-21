@@ -32,6 +32,7 @@
     <string name="co_title">CO一氧化碳</string>
     <string name="no2_title">NO2二氧化氮</string>
     <string name="o3_title">O3臭氧</string>
+    <string name="cofirm_delete_city">是否删除这个城市</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

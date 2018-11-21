@@ -57,7 +57,7 @@ public class Location {
         @Override
         public void onLocationChanged(AMapLocation loc) {
             if (null != loc && loc.getErrorCode() == 0) {
-                ToastUtils.showShort(loc.getCity() + loc.getDistrict());
+                ToastUtils.showShort("当前定位:" + loc.getCity() + loc.getDistrict());
                 Basepreference.putString(Constant.LOCATION_CITY, loc.getCity());
                 Basepreference.putString(Constant.LOCATION_DISTRICT, loc.getDistrict());
                 RxBus.getDefault().post(new ChangeCityEvent());

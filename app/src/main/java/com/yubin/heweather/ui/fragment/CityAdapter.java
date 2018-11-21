@@ -101,7 +101,7 @@ public class CityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 mCardView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
-                        DialogHelper.getConfirmDialog(mContext, "是否删除这个城市", new DialogInterface.OnClickListener() {
+                        DialogHelper.getConfirmDialog(mContext, mContext.getResources().getString(R.string.cofirm_delete_city), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 CityBeanDao cityBeanDao = App.getAppInstance().getDaoSession().getCityBeanDao();
@@ -111,7 +111,8 @@ public class CityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                     String locationCity = Basepreference.getString(Constant.LOCATION_CITY);
                                     String locationArea = Basepreference.getString(Constant.LOCATION_DISTRICT);
                                     Basepreference.putString(Constant.USE_CITY, locationCity);
-                                    Basepreference.putString(Constant.LOCATION_DISTRICT, locationArea);
+                                    Basepreference.putString(Constant.USE_DISTRICT, locationArea);
+                                    RxBus.getDefault().post(new ChangeCityEvent());
                                 }
                                 cityBeanDao.delete(deleteCity);
                                 cityData.remove(deleteCity);
