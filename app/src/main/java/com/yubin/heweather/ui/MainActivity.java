@@ -110,6 +110,7 @@ public class MainActivity extends BaseAppCompatActivity
         mAdapter.addTab(mAirFragment,getResources().getString(R.string.main_air_title));
         mAdapter.addTab(mMultiCityChooseFragment,getResources().getString(R.string.main_city_title));
         viewPager.setAdapter(mAdapter);
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager,false);
 
     }
