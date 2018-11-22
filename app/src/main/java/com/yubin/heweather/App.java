@@ -5,6 +5,7 @@ import android.app.Application;
 import com.yubin.heweather.bean.DaoMaster;
 import com.yubin.heweather.bean.DaoSession;
 import com.yubin.heweather.model.greendao.GreenDaoOpenHelper;
+import com.yubin.heweather.utils.ContextUtils;
 import com.yubin.heweather.utils.XLog;
 
 import org.greenrobot.greendao.database.Database;
@@ -20,7 +21,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        appInstance = this;
+       appInstance = this;
+        ContextUtils.init(getApplicationContext());
         if (!BuildConfig.DEBUG) {
             XLog.closeLog();
         }

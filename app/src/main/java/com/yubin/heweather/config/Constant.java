@@ -16,7 +16,9 @@ public class Constant {
     public static final String LOCATION_DISTRICT = "location_district";
     public static final String USE_CITY = "use_city";
     public static final String USE_DISTRICT = "use_district";
+    public static final String JUMP_TO_MAIN = "jump_to_main";
     public static final String HEWEATHER_KEY = "e4f463c603ec41628d4d497b5eccbe6a";
+    public static final String FIR_TOKEN = "24740a9601dcda5a6408e268aac6d882";
 
     public static final String[] REQUEST_PERMISSIONS = {
             Manifest.permission.ACCESS_COARSE_LOCATION,

@@ -60,6 +60,10 @@ public class Location {
                 ToastUtils.showShort("当前定位:" + loc.getCity() + loc.getDistrict());
                 Basepreference.putString(Constant.LOCATION_CITY, loc.getCity());
                 Basepreference.putString(Constant.LOCATION_DISTRICT, loc.getDistrict());
+                if (!Basepreference.contains(Constant.USE_DISTRICT) && !Basepreference.contains(Constant.USE_CITY)) {
+                    Basepreference.putString(Constant.USE_CITY, loc.getCity());
+                    Basepreference.putString(Constant.USE_DISTRICT, loc.getDistrict());
+                }
                 RxBus.getDefault().post(new ChangeCityEvent());
             } else {
                 ToastUtils.showShort(R.string.location_failed);

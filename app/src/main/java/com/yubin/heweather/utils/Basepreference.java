@@ -19,6 +19,10 @@ public class Basepreference {
         return SP_UTILS.getString(key);
     }
 
+    public static String getString(String key, String value) {
+        return SP_UTILS.getString(key, value);
+    }
+
     public static void putInt(String key,int value) {
         SP_UTILS.put(key, value);
     }

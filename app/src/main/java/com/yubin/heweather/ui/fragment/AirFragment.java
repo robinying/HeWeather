@@ -42,12 +42,7 @@ public class AirFragment extends BaseFragment implements AirContract.View {
     @Override
     public void onResume() {
         super.onResume();
-        String city = null;
-        if (!Basepreference.contains(Constant.USE_CITY)) {
-            city = Basepreference.getString(Constant.LOCATION_CITY);
-        } else {
-            city = Basepreference.getString(Constant.USE_CITY);
-        }
+        String city = Basepreference.getString(Constant.USE_CITY, "北京");
         mPresenter.getAirData(city);
     }
 
@@ -84,12 +79,7 @@ public class AirFragment extends BaseFragment implements AirContract.View {
                 .filter(event -> isVisible())
                 .doOnNext(event -> {
                     if (mPresenter != null) {
-                        String city =null;
-                        if (!Basepreference.contains(Constant.USE_CITY)) {
-                            city = Basepreference.getString(Constant.LOCATION_CITY);
-                        } else {
-                            city = Basepreference.getString(Constant.USE_CITY);
-                        }
+                        String city  = Basepreference.getString(Constant.USE_CITY);
                         mPresenter.getAirData(city);
                     }
                 })
@@ -103,12 +93,7 @@ public class AirFragment extends BaseFragment implements AirContract.View {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 if(mPresenter !=null){
-                    String city =null;
-                    if (!Basepreference.contains(Constant.USE_CITY)) {
-                        city = Basepreference.getString(Constant.LOCATION_CITY);
-                    } else {
-                        city = Basepreference.getString(Constant.USE_CITY);
-                    }
+                    String city  = Basepreference.getString(Constant.USE_CITY);
                     mPresenter.getAirData(city);
                 }
                 airRefresh.finishRefresh(1000);

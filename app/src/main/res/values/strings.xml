@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">https://github.com/robinying</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -33,7 +33,14 @@
     <string name="no2_title">NO2二氧化氮</string>
     <string name="o3_title">O3臭氧</string>
     <string name="cofirm_delete_city">是否删除这个城市</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="clear_cache_title">清除缓存</string>
+    <string name="application_version">软件版本</string>
+    <string name="update_settings">检查更新</string>
+    <string name="about_code"><a href='https://github.com/robinying/HeWeather'>https://github.com/robinying/HeWeather</a></string>
+    <string name="updatecontent">1.新版本震撼来袭\n2.欢迎Star和Issue\n5.github:<a href='https://github.com/robinying'>https://github.com/robinying</a></string>
+    <string name="copy_success">复制成功</string>
+    <string name="update_title">更新版本</string>
 
     <!-- Strings related to Settings -->
 

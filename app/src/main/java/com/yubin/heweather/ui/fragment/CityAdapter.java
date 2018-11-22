@@ -44,6 +44,7 @@ public class CityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public CityAdapter(List<CityBean> cityData) {
         this.cityData = cityData;
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -74,6 +75,8 @@ public class CityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView multiCity;
         @BindView(R.id.multi_area)
         TextView multiArea;
+        @BindView(R.id.multi_location)
+        ImageView multiLocation;
 
         MultiCityViewHolder(View itemView) {
             super(itemView);
@@ -83,17 +86,25 @@ public class CityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             try {
                 multiCity.setText(cityBean.getCity());
                 multiArea.setText(cityBean.getDiscrict());
-                if (Basepreference.getString(Constant.USE_CITY).equals(cityBean.getCity())
+                if (Basepreference.contains(Constant.USE_CITY)
+                        && Basepreference.getString(Constant.USE_CITY).equals(cityBean.getCity())
                         && Basepreference.getString(Constant.USE_DISTRICT).equals(cityBean.getDiscrict())) {
                     multiChoose.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     multiChoose.setVisibility(View.INVISIBLE);
+                }
+                if (Basepreference.contains(Constant.LOCATION_DISTRICT)
+                        && Basepreference.getString(Constant.LOCATION_DISTRICT).equals(cityBean.getDiscrict())
+                        && Basepreference.getString(Constant.LOCATION_CITY).equals(cityBean.getCity())) {
+                    multiLocation.setVisibility(View.VISIBLE);
+                } else {
+                    multiLocation.setVisibility(View.INVISIBLE);
                 }
                 mCardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Basepreference.putString(Constant.USE_CITY,cityBean.getCity());
-                        Basepreference.putString(Constant.USE_DISTRICT,cityBean.getDiscrict());
+                        Basepreference.putString(Constant.USE_CITY, cityBean.getCity());
+                        Basepreference.putString(Constant.USE_DISTRICT, cityBean.getDiscrict());
                         RxBus.getDefault().post(new ChangeCityEvent());
                         notifyDataSetChanged();
                     }

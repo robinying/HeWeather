@@ -37,6 +37,15 @@
             tools:text="鄞州区"/>
 
         <ImageView
+            android:id="@+id/multi_location"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_toEndOf="@id/multi_area"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_city_location"
+            android:visibility="invisible"/>
+
+        <ImageView
             android:id="@+id/multi_choose"
             android:layout_alignParentEnd="true"
             android:layout_width="25dp"
