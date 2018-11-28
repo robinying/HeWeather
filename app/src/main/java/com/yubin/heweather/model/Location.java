@@ -58,9 +58,16 @@ public class Location {
         public void onLocationChanged(AMapLocation loc) {
             if (null != loc && loc.getErrorCode() == 0) {
                 ToastUtils.showShort("当前定位:" + loc.getCity() + loc.getDistrict());
+                /**
+                 * 当位置变化时更新user的位置，获取到当前的定位
+                 */
+                boolean changeLocation = Basepreference.contains(Constant.LOCATION_DISTRICT)
+                        && Basepreference.contains(Constant.USE_DISTRICT)
+                        && !loc.getDistrict().equals(Basepreference.getString(Constant.LOCATION_DISTRICT))
+                        && Basepreference.getString(Constant.USE_DISTRICT).equals(Basepreference.getString(Constant.LOCATION_DISTRICT));
                 Basepreference.putString(Constant.LOCATION_CITY, loc.getCity());
                 Basepreference.putString(Constant.LOCATION_DISTRICT, loc.getDistrict());
-                if (!Basepreference.contains(Constant.USE_DISTRICT) && !Basepreference.contains(Constant.USE_CITY)) {
+                if (!Basepreference.contains(Constant.USE_DISTRICT) && !Basepreference.contains(Constant.USE_CITY) || changeLocation) {
                     Basepreference.putString(Constant.USE_CITY, loc.getCity());
                     Basepreference.putString(Constant.USE_DISTRICT, loc.getDistrict());
                 }
